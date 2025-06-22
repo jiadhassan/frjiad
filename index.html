@@ -20,15 +20,24 @@
       align-items: center;
       justify-content: space-between;
       padding: 12px 20px;
+      flex-wrap: wrap;
+    }
+    header .logo-container {
+      display: flex;
+      align-items: center;
     }
     header img.logo {
       height: 50px;
+      margin-right: 12px;
     }
     header nav a {
       color: white;
-      margin-left: 20px;
+      margin-left: 15px;
       text-decoration: none;
       font-weight: bold;
+    }
+    header nav a:hover {
+      color: #00dddd;
     }
     .hero {
       text-align: center;
@@ -89,7 +98,10 @@
 <body>
 
   <header>
-    <img src="https://i.ibb.co/Z652PN4/Black-and-Blue-Initials-Creative-Logo-removebg-preview.png" alt="Logo" class="logo">
+    <div class="logo-container">
+      <img src="https://i.postimg.cc/fbqSSWkg/Black-and-Blue-Initials-Creative-Logo.png" alt="Logo" class="logo">
+      <h1>Jiad Hassan</h1>
+    </div>
     <nav>
       <a href="index.html">Home</a>
       <a href="blog.html">Blog</a>
