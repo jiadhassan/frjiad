@@ -7,28 +7,41 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --bg: #f2f4f7;
+      --text: #333;
+      --header: #004d4d;
+      --hero: #e0f7f7;
+      --link: #004d4d;
+      --hover: #008080;
+    }
+    body.dark {
+      --bg: #1d1d1d;
+      --text: #eaeaea;
+      --header: #111;
+      --hero: #222;
+      --link: #9ae3ff;
+      --hover: #00ffff;
+    }
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: #f2f4f7;
-      color: #333;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
     }
     header {
-      background: #004d4d;
+      background: var(--header);
       color: white;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       padding: 12px 20px;
       flex-wrap: wrap;
     }
-    header .logo-container {
-      display: flex;
-      align-items: center;
-    }
-    header img.logo {
-      height: 50px;
-      margin-right: 12px;
+    header h1 {
+      margin: 0;
+      font-size: 1.8em;
     }
     header nav a {
       color: white;
@@ -39,10 +52,18 @@
     header nav a:hover {
       color: #00dddd;
     }
+    .toggle-btn {
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.2em;
+      margin-left: 15px;
+    }
     .hero {
       text-align: center;
       padding: 40px 20px;
-      background: #e0f7f7;
+      background: var(--hero);
     }
     .hero img.profile {
       width: 160px;
@@ -67,7 +88,7 @@
     }
     .section h3 {
       color: #006666;
-      border-bottom: 2px solid #ddd;
+      border-bottom: 2px solid #ccc;
       padding-bottom: 6px;
       margin-bottom: 15px;
     }
@@ -81,11 +102,11 @@
     .social a {
       margin-right: 15px;
       text-decoration: none;
-      color: #004d4d;
+      color: var(--link);
       font-size: 1.4em;
     }
     .social a:hover {
-      color: #008080;
+      color: var(--hover);
     }
     footer {
       text-align: center;
@@ -98,13 +119,11 @@
 <body>
 
   <header>
-    <div class="logo-container">
-      <img src="https://i.postimg.cc/fbqSSWkg/Black-and-Blue-Initials-Creative-Logo.png" alt="Logo" class="logo">
-      <h1>Jiad Hassan</h1>
-    </div>
+    <h1>Jiad Hassan</h1>
     <nav>
       <a href="index.html">Home</a>
       <a href="blog.html">Blog</a>
+      <button class="toggle-btn" id="themeToggle" title="Toggle dark mode">🌙</button>
     </nav>
   </header>
 
@@ -143,6 +162,28 @@
   <footer>
     &copy; 2025 Jiad Hassan | All rights reserved.
   </footer>
+
+  <script>
+    const toggle = document.getElementById("themeToggle");
+    const body = document.body;
+    const saved = localStorage.getItem("theme");
+
+    if (saved === "dark") {
+      body.classList.add("dark");
+      toggle.textContent = "☀️";
+    }
+
+    toggle.addEventListener("click", () => {
+      body.classList.toggle("dark");
+      if (body.classList.contains("dark")) {
+        localStorage.setItem("theme", "dark");
+        toggle.textContent = "☀️";
+      } else {
+        localStorage.setItem("theme", "light");
+        toggle.textContent = "🌙";
+      }
+    });
+  </script>
 
 </body>
 </html>
